@@ -23,12 +23,18 @@ describe("StringCalculator", () => {
   });
 
   test("should return sum of two numbers with newline delimiter", () => {
-    expect(sc.add("1\\n2")).toBe(3);
-    expect(sc.add("2\\n2")).toBe(4);
+    expect(sc.add("1\n2")).toBe(3);
+    expect(sc.add("2\n2")).toBe(4);
   });
 
   test("should return sum of three numbers with comma and newline delimiters", () => {
-    expect(sc.add("1\\n2,3")).toBe(5);
-    expect(sc.add("2\\n2,4")).toBe(8);
+    expect(sc.add("1\n2,3")).toBe(6);
+    expect(sc.add("2\n2,4")).toBe(8);
+  });
+
+  test("should throw exception when given negative numbers", () => {
+    expect(() => sc.add("-1,2-3")).toThrow(
+      new Error("negatives not allowed: -1,-3")
+    );
   });
 });
