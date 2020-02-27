@@ -1,7 +1,7 @@
 const Greeter = require("../1_greeter");
 
 describe("Greeter", () => {
-  let greeter;
+  let gtr;
   let date;
   let logger;
 
@@ -14,52 +14,65 @@ describe("Greeter", () => {
       log: jest.fn()
     };
 
-    greeter = new Greeter(() => date.getTime(), logger);
+    gtr = new Greeter(() => date.getTime(), logger);
   });
 
   test("should greet", () => {
-    expect(greeter.greet()).toBe("Hello!");
+    expect(gtr.greet()).toBe("Hello!");
   });
 
   test("should greet with name", () => {
-    expect(greeter.greet("Chance")).toBe("Hello, Chance!");
-    expect(greeter.greet("Bob")).toBe("Hello, Bob!");
+    expect(gtr.greet("Chance")).toBe("Hello, Chance!");
+    expect(gtr.greet("Bob")).toBe("Hello, Bob!");
   });
 
   test("should trim name", () => {
-    expect(greeter.greet(" Chance  ")).toBe("Hello, Chance!");
+    expect(gtr.greet(" Chance  ")).toBe("Hello, Chance!");
   });
 
   test("should capitalize first letter of name", () => {
-    expect(greeter.greet("chance")).toBe("Hello, Chance!");
+    expect(gtr.greet("chance")).toBe("Hello, Chance!");
   });
 
   test("should greet morning: 06:00 - 12:00", () => {
     date.setHours(6);
-    const result = greeter.greet("chance");
-    expect(result).toBe("Good Morning, Chance!");
+    expect(gtr.greet("chance")).toBe("Good Morning, Chance!");
+    date.setHours(8);
+    expect(gtr.greet("chance")).toBe("Good Morning, Chance!");
+    date.setHours(11);
+    expect(gtr.greet("chance")).toBe("Good Morning, Chance!");
   });
 
   test("should greet evening: 18:00 - 22:00", () => {
+    date.setHours(18);
+    expect(gtr.greet("chance")).toBe("Good evening, Chance!");
     date.setHours(19);
-    const result = greeter.greet("chance");
-    expect(result).toBe("Good evening, Chance!");
+    expect(gtr.greet("chance")).toBe("Good evening, Chance!");
+    date.setHours(21);
+    expect(gtr.greet("chance")).toBe("Good evening, Chance!");
   });
 
   test("should greet night: 22:00 - 06:00", () => {
-    date.setHours(23);
-    const result = greeter.greet("chance");
-    expect(result).toBe("Good night, Chance!");
-
+    date.setHours(22);
+    expect(gtr.greet("chance")).toBe("Good night, Chance!");
     date.setHours(2);
-    const result2 = greeter.greet("chance");
-    expect(result2).toBe("Good night, Chance!");
+    expect(gtr.greet("chance")).toBe("Good night, Chance!");
+    date.setHours(5);
+    expect(gtr.greet("chance")).toBe("Good night, Chance!");
+  });
+
+  test("should greet afternoon: 22:00 - 06:00", () => {
+    date.setHours(13);
+    expect(gtr.greet("chance")).toBe("Hello, Chance!");
   });
 
   test("should log into console when called", () => {
     expect(logger.log).not.toHaveBeenCalled();
-    greeter.greet("Chance");
+    gtr.greet("Chance");
     expect(logger.log).toHaveBeenCalledTimes(1);
     expect(logger.log).toHaveBeenCalledWith("greeted Chance");
+    gtr.greet("Bob");
+    expect(logger.log).toHaveBeenCalledTimes(2);
+    expect(logger.log).toHaveBeenCalledWith("greeted Bob");
   });
 });

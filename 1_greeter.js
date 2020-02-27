@@ -7,6 +7,16 @@ class Greeter {
   greet(name = "") {
     const formattedName = name.trim().replace(/^\w/, c => c.toUpperCase());
 
+    const greetingResults = `${this.gatherIntro()}${
+      name !== "" ? ", " + formattedName : ""
+    }!`;
+
+    this.logger.log(`greeted ${name}`);
+
+    return greetingResults;
+  }
+
+  gatherIntro() {
     const currentTime = new Date(this.getCurrentTimeMillisFn());
     const hourOfDay = currentTime.getHours();
 
@@ -20,13 +30,7 @@ class Greeter {
     if (isEvening) intro = "Good evening";
     if (isNight) intro = "Good night";
 
-    const greetingResults = `${intro}${
-      name !== "" ? ", " + formattedName : ""
-    }!`;
-
-    this.logger.log(`greeted ${name}`);
-
-    return greetingResults;
+    return intro;
   }
 }
 
