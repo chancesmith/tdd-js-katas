@@ -4,15 +4,14 @@ class StringCalculator {
   add(numString) {
     if (!numString) return 0;
 
-    const formattedNumString = numString.replace(/(?:\r\n|\r|\n)/g, ",");
+    return this.sum(this.foundNegatives(this.splitAndParse(numString)));
+  }
 
-    const hasCommaDelimiter = formattedNumString.indexOf(",") > -1;
-    if (hasCommaDelimiter) {
-      const numbersList = formattedNumString.split(",");
-      return this.sum(this.foundNegatives(numbersList));
-    }
+  splitAndParse(numbersString) {
+    const delimiter = /,|\n/;
 
-    return Number(numString);
+    const strArr = numbersString.split(delimiter);
+    return strArr.map(Number);
   }
 
   foundNegatives(numbers) {
