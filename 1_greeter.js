@@ -5,15 +5,15 @@ class Greeter {
   }
 
   greet(name = "") {
-    const formattedName = name.trim().replace(/^\w/, c => c.toUpperCase());
-
-    const greetingResults = `${this.gatherIntro()}${
-      name !== "" ? ", " + formattedName : ""
-    }!`;
-
     this.logger.log(`greeted ${name}`);
 
-    return greetingResults;
+    return `${this.gatherIntro()}${
+      name !== "" ? ", " + this.trimAndCaps(name) : ""
+    }!`;
+  }
+
+  trimAndCaps(name) {
+    return name.trim().replace(/^\w/, c => c.toUpperCase());
   }
 
   gatherIntro() {
