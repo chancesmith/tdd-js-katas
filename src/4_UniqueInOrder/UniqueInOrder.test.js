@@ -1,4 +1,4 @@
-const UniqueInOrder = require("../4_unique-in-order");
+const UniqueInOrder = require("./UniqueInOrder");
 
 describe("UniqueInOrder", () => {
   test("should work with empty array", () => {

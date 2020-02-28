@@ -1,4 +1,4 @@
-const PrimeFactors = require("../3_prime-factors");
+const PrimeFactors = require("./PrimeFactors");
 
 describe("PrimeFactors", () => {
   let pf;

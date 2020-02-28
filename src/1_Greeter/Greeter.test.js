@@ -1,4 +1,4 @@
-const Greeter = require("../1_greeter");
+const Greeter = require("./Greeter");
 
 describe("Greeter", () => {
   let gtr;

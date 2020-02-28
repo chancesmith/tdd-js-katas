@@ -1,4 +1,4 @@
-const StringCalculator = require("../2_string-calculator");
+const StringCalculator = require("./StringCalculator");
 
 describe("StringCalculator", () => {
   let sc;
