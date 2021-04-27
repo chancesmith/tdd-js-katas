@@ -1,27 +1,28 @@
 const Bowling = require("./Bowling");
 
 describe("Bowling", () => {
-  test("should start with score of 0", () => {
-    // arrange
-    const game = new Bowling();
-    // assert
-    expect(game.score()).toBe(0);
-  });
+  test('should start game', () => {
+    const game = new Bowling()
+    expect(game).not.toBeUndefined();
+  })
+  test('should play gutter game', () => {
+    const game = new Bowling()
 
-  test("should knock down 1 pin and score be 1", () => {
-    // arrange
-    const game = new Bowling();
-    // act
-    game.roll(1);
-    // assert
-    expect(game.score()).toBe(1)
-  });
-  test("should knock down 2 pin and score be 2", () => {
-    // arrange
-    const game = new Bowling();
-    // act
-    game.roll(2);
-    // assert
-    expect(game.score()).toBe(2)
-  });
+    for (let i = 0; i < 20; i++) {
+      game.roll(0);
+    }
+
+    expect(game.score()).toBe(0)
+  })
+  test('should play game with 1 pin knocked down each time', () => {
+    const game = new Bowling()
+
+    for (let i = 0; i < 20; i++) {
+      game.roll(1);
+    }
+
+    expect(game.score()).toBe(20)
+  })
+
+
 });

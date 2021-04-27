@@ -12,17 +12,16 @@
 // – int score() returns the total score for that game.
 
 class Bowling {
-  constructor() {
-    this.downpins = 10;
+
+  constructor(){
     this.totalScore = 0;
   }
 
-  roll(numberOfPinsDown) {
-    this.downpins = this.downpins - numberOfPinsDown;
-    this.totalScore = this.totalScore + numberOfPinsDown;
+  roll(pins){
+    this.totalScore = this.totalScore + pins;
   }
 
-  score() {
+  score(){
     return this.totalScore;
   }
 }
