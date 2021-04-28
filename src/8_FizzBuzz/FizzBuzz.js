@@ -4,12 +4,9 @@
 // For the multiples of five print Buzz instead of the number
 // For numbers which are multiples of both three and five print FizzBuzz instead of the number
 
-function fizzBuzz(startNumber){
-  if(startNumber === 0) {
-    console.log(startNumber);
-    return;
-  }
-  for (let printNum = 0; printNum <= startNumber; printNum++) {
+function fizzBuzz(){
+  const startNumber = 100;
+  for (let printNum = 0; printNum < startNumber; printNum++) {
     const newNumber = startNumber - printNum
     if(newNumber % 3 === 0 && newNumber % 5 === 0) console.log('FizzBuzz')
     else if(newNumber % 3 === 0) console.log('Fizz')
