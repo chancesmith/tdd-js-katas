@@ -27,7 +27,7 @@ describe("fizzBuzz", () => {
     expect(console.log).toHaveBeenCalledWith('Buzz')
   })
 
-  fit('should print fizzbuzz', ()=>{
+  it('should print fizzbuzz', ()=>{
     fizzBuzz(12)
     expect(console.log).toHaveBeenCalledTimes(13)
     expect(console.log).toHaveBeenCalledWith('FizzBuzz')
