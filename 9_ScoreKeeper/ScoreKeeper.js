@@ -12,15 +12,19 @@
 // void scoreTeamB3()
 // String getScore()
 
+// Rules
+// The returned String always has seven characters. An example would be 000:000
+
 class ScoreKeeper {
   constructor(){
     this.teamAScore = 0
+    this.teamBScore = 0
   }
 
   getScore(){
     const teamA = this.stringifyScore(this.teamAScore)
-    // const teamA = stringifyScore(this.teamAScore)
-    return `${teamA}-000`;
+    const teamB = this.stringifyScore(this.teamBScore)
+    return `${teamA}-${teamB}`;
   }
   scoreTeamA1(){
     this.teamAScore += 1
@@ -30,6 +34,15 @@ class ScoreKeeper {
   }
   scoreTeamA3(){
     this.teamAScore += 3
+  }
+  scoreTeamB1(){
+    this.teamBScore += 1
+  }
+  scoreTeamB2(){
+    this.teamBScore += 2
+  }
+  scoreTeamB3(){
+    this.teamBScore += 3
   }
 
   stringifyScore(score){

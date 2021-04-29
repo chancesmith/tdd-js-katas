@@ -35,6 +35,29 @@ describe("ScoreKeeper", () => {
     const score = sk.getScore()
     expect(score).toBe('010-000')
   });
+  it('should give B team 1 point', () => {
+    sk.scoreTeamB1()
+    const score = sk.getScore()
+    expect(score).toBe('000-001')
+  });
+  it('should give B team 2 point', () => {
+    sk.scoreTeamB2()
+    const score = sk.getScore()
+    expect(score).toBe('000-002')
+  });
+  it('should give B team 3 point', () => {
+    sk.scoreTeamB3()
+    const score = sk.getScore()
+    expect(score).toBe('000-003')
+  });
+  it('should give B team 10 point', () => {
+    sk.scoreTeamB3()
+    sk.scoreTeamB3()
+    sk.scoreTeamB3()
+    sk.scoreTeamB1()
+    const score = sk.getScore()
+    expect(score).toBe('000-010')
+  });
   it('should stringify score 1 to 001', () => {
     const score = sk.stringifyScore(1)
     expect(score).toBe('001')
