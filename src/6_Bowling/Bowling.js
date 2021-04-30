@@ -14,15 +14,34 @@
 class Bowling {
 
   constructor(){
-    this.totalScore = 0;
+    this.rolls = Array(21);
+    this.currentFrame = 0;
   }
 
   roll(pins){
-    this.totalScore = this.totalScore + pins;
+    this.rolls[this.currentFrame] = pins;
+    this.currentFrame++
   }
 
   score(){
-    return this.totalScore;
+    let totalScore = 0;
+    let i = 0;
+    for (let frame = 0; frame < 10; frame++) {
+      const isStrike = this.rolls[frame] == 10
+      const isSpare = this.rolls[i] + this.rolls[i + 1] === 10
+      if (isStrike) {
+        totalScore += 10 + this.rolls[i+1] + this.rolls[i+2];
+        i++;
+      }
+      if (isSpare) {
+        totalScore += 10 + this.rolls[i + 2];
+        i += 2;
+      } else {
+        totalScore += this.rolls[i] + this.rolls[i + 1];
+        i += 2;
+      }
+    }
+    return totalScore
   }
 }
 
