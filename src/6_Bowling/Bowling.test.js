@@ -26,13 +26,13 @@ describe("Bowling", () => {
     manyRolls(18, 0)
     expect(game.score()).toBe(10)
   })
-  // it('should roll 1 strike then all 0s', () => {
-  //   game.roll(10) // strike
-  //   game.roll(3)
-  //   game.roll(4)
-  //   manyRolls(16, 0)
-  //   expect(game.score()).toBe(20)
-  // })
+  it('should roll 1 strike then all 0s', () => {
+    game.roll(10) // strike
+    // game.roll(3)
+    // game.roll(4)
+    // manyRolls(16, 0)
+    expect(game.score()).toBe(24)
+  })
 
   // it('should roll all strikes', () => {
   //   manyRolls(12,10)

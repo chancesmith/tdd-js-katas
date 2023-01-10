@@ -14,7 +14,7 @@
 class Bowling {
 
   constructor(){
-    this.rolls = Array(21);
+    this.rolls = [];
     this.currentFrame = 0;
   }
 
@@ -25,20 +25,20 @@ class Bowling {
 
   score(){
     let totalScore = 0;
-    let i = 0;
+    let frameIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
-      const isStrike = this.rolls[frame] == 10
-      const isSpare = this.rolls[i] + this.rolls[i + 1] === 10
-      if (isStrike) {
-        totalScore += 10 + this.rolls[i+1] + this.rolls[i+2];
-        i++;
-      }
+      // const isStrike = this.rolls[frame] == 10
+      const isSpare = this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10
+      // if (isStrike) {
+      //   totalScore += 10 + this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
+      //   frameIndex++;
+      // }
       if (isSpare) {
-        totalScore += 10 + this.rolls[i + 2];
-        i += 2;
+        totalScore = totalScore + 10 + this.rolls[frameIndex + 2];
+        frameIndex += 2;
       } else {
-        totalScore += this.rolls[i] + this.rolls[i + 1];
-        i += 2;
+        totalScore += this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+        frameIndex += 2;
       }
     }
     return totalScore
