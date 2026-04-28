@@ -8,25 +8,25 @@ describe("Bowling", () => {
     game = new Bowling()
   })
 
-  test('should start game', () => {
+  test('starts game', () => {
     expect(game).not.toBeUndefined();
   })
-  test('should play gutter game', () => {
+  test('plays gutter game', () => {
     manyRolls(20, 0)
     expect(game.score()).toBe(0)
   })
-  test('should play game with 1 pin knocked down each time', () => {
+  test('plays game with 1 pin knocked down each time', () => {
     manyRolls(20, 1)
     expect(game.score()).toBe(20)
   })
 
-  it('should roll 1 spare then all 0s', () => {
+  it('rolls 1 spare then all 0s', () => {
     game.roll(5)
     game.roll(5) // spare
     manyRolls(18, 0)
     expect(game.score()).toBe(10)
   })
-  // it('should roll 1 strike then all 0s', () => {
+  // it('rolls 1 strike then all 0s', () => {
   //   game.roll(10) // strike
   //   game.roll(3)
   //   game.roll(4)
@@ -34,7 +34,7 @@ describe("Bowling", () => {
   //   expect(game.score()).toBe(20)
   // })
 
-  // it('should roll all strikes', () => {
+  // it('rolls all strikes', () => {
   //   manyRolls(12,10)
   //   expect(game.score()).toBe(300)
   // })
