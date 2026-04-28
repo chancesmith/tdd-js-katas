@@ -11,7 +11,7 @@ const Order = require("./pizza-kiosk");
 // 9. payment method
 
 describe("Pizza Kiosk", () => {
-  it("should add customer name", () => {
+  it("adds customer name", () => {
     // Arrange
     const firstName = "John";
     const lastName = "Doe";
