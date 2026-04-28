@@ -7,19 +7,19 @@ describe("BuildTower", () => {
     bt = new BuildTower();
   });
 
-  test("should build nothing", () => {
+  test("builds nothing", () => {
     expect(bt.build(0)).toEqual([]);
   });
 
-  test("should build one level", () => {
+  test("builds one level", () => {
     expect(bt.build(1)).toEqual(["*"]);
   });
 
-  test("should build two levels", () => {
+  test("builds two levels", () => {
     expect(bt.build(2)).toEqual([" * ", "***"]);
   });
 
-  test("should build five levels", () => {
+  test("builds five levels", () => {
     expect(bt.build(5)).toEqual([
       "    *    ",
       "   ***   ",

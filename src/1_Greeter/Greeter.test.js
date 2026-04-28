@@ -17,24 +17,24 @@ describe("Greeter", () => {
     gtr = new Greeter(() => date.getTime(), logger);
   });
 
-  test("should greet", () => {
+  test("greets", () => {
     expect(gtr.greet()).toBe("Hello!");
   });
 
-  test("should greet with name", () => {
+  test("greets with name", () => {
     expect(gtr.greet("Chance")).toBe("Hello, Chance!");
     expect(gtr.greet("Bob")).toBe("Hello, Bob!");
   });
 
-  test("should trim name", () => {
+  test("trims name", () => {
     expect(gtr.greet(" Chance  ")).toBe("Hello, Chance!");
   });
 
-  test("should capitalize first letter of name", () => {
+  test("capitalizes first letter of name", () => {
     expect(gtr.greet("chance")).toBe("Hello, Chance!");
   });
 
-  test("should greet morning: 06:00 - 12:00", () => {
+  test("greets morning: 06:00 - 12:00", () => {
     date.setHours(6);
     expect(gtr.greet("chance")).toBe("Good Morning, Chance!");
     date.setHours(8);
@@ -43,7 +43,7 @@ describe("Greeter", () => {
     expect(gtr.greet("chance")).toBe("Good Morning, Chance!");
   });
 
-  test("should greet evening: 18:00 - 22:00", () => {
+  test("greets evening: 18:00 - 22:00", () => {
     date.setHours(18);
     expect(gtr.greet("chance")).toBe("Good evening, Chance!");
     date.setHours(19);
@@ -52,7 +52,7 @@ describe("Greeter", () => {
     expect(gtr.greet("chance")).toBe("Good evening, Chance!");
   });
 
-  test("should greet night: 22:00 - 06:00", () => {
+  test("greets night: 22:00 - 06:00", () => {
     date.setHours(22);
     expect(gtr.greet("chance")).toBe("Good night, Chance!");
     date.setHours(2);
@@ -61,12 +61,12 @@ describe("Greeter", () => {
     expect(gtr.greet("chance")).toBe("Good night, Chance!");
   });
 
-  test("should greet afternoon: 22:00 - 06:00", () => {
+  test("greets afternoon: 12:00 - 18:00", () => {
     date.setHours(13);
     expect(gtr.greet("chance")).toBe("Hello, Chance!");
   });
 
-  test("should log into console when called", () => {
+  test("logs into console when called", () => {
     expect(logger.log).not.toHaveBeenCalled();
     gtr.greet("Chance");
     expect(logger.log).toHaveBeenCalledTimes(1);
