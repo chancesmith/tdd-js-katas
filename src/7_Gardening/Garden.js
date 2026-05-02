@@ -15,16 +15,6 @@
 // * canPlant([0], 1) → true
 // * canPlant([], 0) → true
 
-export function canPlant(garden: number[], plants: number) {
-    if(garden.length === 0) return plants === 0
-    // if(garden.some(plant => plant === 0)) return true 
-
-    let openPlots = garden.length - garden.reduce((a,c) => a + c, 0)
-    console.log({openPlots})
-
-    return openPlots >= plants
-}
-
 
 function canPlant(garden=[], plantsCount=0){
   if(isEmptyGarden(garden)) return false;
