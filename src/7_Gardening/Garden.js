@@ -1,8 +1,30 @@
-// garden = [1,0,0,0,1]
+// TDD Kata Instructions:
+// Garden Plot
+// canPlant(plots, n) where plots is [1,0,0,0,1] (1 is planted, 0 is empty). 
+// Returns true if there are at least n empty plots.
 
+// garden = [1,0,0,0,1]
 // canPlant(garden, 0) --> false // no plants to plant
 // canPlant(garden, 1) --> true // plant at position 2
 // canPlant(garden, 4) --> false // there are only 3 plots, and two of them can't be planted on
+
+// * canPlant([1,0,0,0,1], 1) → true
+// * canPlant([1,0,0,0,1], 2) → false
+// * canPlant([0,0,0], 2) → true
+// * canPlant([1,0,0,0,0,0,1], 2) → true
+// * canPlant([0], 1) → true
+// * canPlant([], 0) → true
+
+export function canPlant(garden: number[], plants: number) {
+    if(garden.length === 0) return plants === 0
+    // if(garden.some(plant => plant === 0)) return true 
+
+    let openPlots = garden.length - garden.reduce((a,c) => a + c, 0)
+    console.log({openPlots})
+
+    return openPlots >= plants
+}
+
 
 function canPlant(garden=[], plantsCount=0){
   if(isEmptyGarden(garden)) return false;
