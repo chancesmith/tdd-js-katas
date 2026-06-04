@@ -1,6 +1,6 @@
 // TDD Kata Instructions:
 // Garden Plot
-// canPlant(plots, n) where plots is [1,0,0,0,1] (1 is planted, 0 is empty). 
+// canPlant(plots, n) where plots is [1,0,0,0,1] (1 is planted, 0 is empty).
 // Returns true if there are at least n empty plots.
 
 // garden = [1,0,0,0,1]
@@ -15,23 +15,22 @@
 // * canPlant([0], 1) → true
 // * canPlant([], 0) → true
 
-
-function canPlant(garden=[], plantsCount=0){
-  if(isEmptyGarden(garden)) return false;
-  if(isPlantsEmpty(plantsCount)) return false;
+function canPlant(garden = [], plantsCount = 0) {
+  if (isEmptyGarden(garden)) return false;
+  if (isPlantsEmpty(plantsCount)) return false;
   return isEnoughSpotsToPlant(garden, plantsCount);
 }
 
-function isEmptyGarden(garden){
+function isEmptyGarden(garden) {
   if (garden.length === 0) return true;
 }
 
-function isPlantsEmpty(plantsCount){
-  if (plantsCount===0) return true;
+function isPlantsEmpty(plantsCount) {
+  if (plantsCount === 0) return true;
 }
 
-function isEnoughSpotsToPlant(garden, plantsCount){
-  const numOfSpotsLeft = garden.filter(spot => spot === 0).length;
+function isEnoughSpotsToPlant(garden, plantsCount) {
+  const numOfSpotsLeft = garden.filter((spot) => spot === 0).length;
   if (numOfSpotsLeft >= plantsCount) return true;
   return false;
 }
